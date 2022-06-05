@@ -10,6 +10,7 @@ import {
 } from 'typeorm';
 import { AccountTypeEnum } from '../enums/account-type.enum';
 import { Transaction } from '../../transaction/entities/transaction.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class Account extends BaseEntity {
@@ -37,6 +38,10 @@ export class Account extends BaseEntity {
   @Column({ type: 'varchar', unique: true })
   @Generated('increment')
   accountNumber: number;
+
+  @Exclude()
+  @Column({ type: 'numeric', default: 1000000 })
+  balance: number;
 
   @OneToMany(() => Transaction, (transaction) => transaction.sender)
   transactionsSent: Transaction[];
