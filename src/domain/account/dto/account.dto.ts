@@ -1,25 +1,25 @@
-import {IsEmail, IsEnum, IsNotEmpty} from "class-validator";
-import {AccountTypeEnum} from "../enums/account-type.enum";
+import { IsEmail, IsEnum, IsNotEmpty, IsPositive } from 'class-validator';
+import { AccountTypeEnum } from '../enums/account-type.enum';
 
 export class AccountDto {
-  @IsNotEmpty()
+  @IsNotEmpty({ always: true })
   name: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty({ always: true })
   dni: string;
 
-  @IsEmail()
+  @IsEmail({}, { always: true })
   email: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty({ always: true })
   phone: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty({ always: true })
   bank: string;
 
-  @IsEnum(AccountTypeEnum)
+  @IsEnum(AccountTypeEnum, { always: true })
   accountType: AccountTypeEnum;
 
-  @IsNotEmpty()
-  accountNumber: string;
+  @IsPositive({ groups: ['search'] })
+  accountNumber: number;
 }

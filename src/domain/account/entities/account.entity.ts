@@ -1,11 +1,15 @@
 import {
   BaseEntity,
   Column,
-  Entity, OneToMany,
+  Entity,
+  Generated,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { AccountTypeEnum } from '../enums/account-type.enum';
-import {Transaction} from "../../transaction/entities/transaction.entity";
+import { Transaction } from '../../transaction/entities/transaction.entity';
 
 @Entity()
 export class Account extends BaseEntity {
@@ -30,12 +34,21 @@ export class Account extends BaseEntity {
   @Column({ type: 'enum', enum: AccountTypeEnum })
   accountType: AccountTypeEnum;
 
-  @Column({ type: 'varchar' })
-  accountNumber: string;
+  @Column({ type: 'varchar', unique: true })
+  @Generated('increment')
+  accountNumber: number;
 
   @OneToMany(() => Transaction, (transaction) => transaction.sender)
-  transactionsSent: Transaction[]
+  transactionsSent: Transaction[];
 
   @OneToMany(() => Transaction, (transaction) => transaction.recipient)
-  transactionsReceived: Transaction[]
+  transactionsReceived: Transaction[];
+
+  @ManyToMany(() => Account)
+  @JoinTable({
+    name: 'saved_recipients',
+    joinColumn: { name: 'origin_account_id' },
+    inverseJoinColumn: { name: 'recipient_account_id' },
+  })
+  savedRecipients: Account[];
 }
