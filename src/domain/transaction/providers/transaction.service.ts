@@ -54,4 +54,8 @@ export class TransactionService {
     this.logger.info('service works', { context: this.constructor.name });
     return this.transactionRepository.getAll();
   }
+
+  getById(id: string) {
+    return this.transactionRepository.getById(id);
+  }
 }

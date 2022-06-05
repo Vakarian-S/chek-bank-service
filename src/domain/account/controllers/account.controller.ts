@@ -27,19 +27,36 @@ export class AccountController {
   }
 
   @Post()
-  @UsePipes(new ValidationPipe({ transform: true, whitelist: true, groups: ['create'] }))
+  @UsePipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+      groups: ['create'],
+    }),
+  )
   async create(@Body() accountDto: AccountDto) {
     this.logger.info('controller works', { context: this.constructor.name });
     return this.accountService.create(accountDto);
   }
 
+  @Get(':id')
+  getById(@Param('id', new ParseUUIDPipe()) accountId: string) {
+    return this.accountService.getById(accountId);
+  }
+
   @Get(':id/saved-recipients')
-  getRecipients(@Param('id', new ParseUUIDPipe()) accountId: string,) {
+  getRecipients(@Param('id', new ParseUUIDPipe()) accountId: string) {
     return this.accountService.getRecipients(accountId);
   }
 
   @Post(':id/saved-recipients')
-  @UsePipes(new ValidationPipe({ transform: true, whitelist: true, groups: ['search'] }))
+  @UsePipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+      groups: ['search'],
+    }),
+  )
   addRecipient(
     @Param('id', new ParseUUIDPipe()) accountId: string,
     @Body() accountDto: AccountDto,
