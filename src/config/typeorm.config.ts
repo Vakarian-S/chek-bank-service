@@ -1,6 +1,8 @@
-import {TypeOrmModuleOptions} from "@nestjs/typeorm";
 
-const typeOrmConfig: TypeOrmModuleOptions = {
+import {DataSource} from "typeorm";
+
+export const typeOrmConfig = new DataSource({
+
   type: 'postgres',
   port: 5432,
   username: 'postgres',
@@ -14,5 +16,4 @@ const typeOrmConfig: TypeOrmModuleOptions = {
     // max connection pool (default: 10)
     max: parseInt(process.env.DATABASE_POOL, 10) || 15,
   },
-}
-export = typeOrmConfig;
+})
