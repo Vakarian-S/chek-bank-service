@@ -4,11 +4,13 @@ import { AppService } from './app.service';
 import { utilities, WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import * as typeOrmConfig from "./config/typeorm.config";
+import { AccountHttpModule } from './domain/account/account-http.module';
+import { typeOrmConfig } from './config/typeorm.config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(typeOrmConfig),
+    AccountHttpModule,
+    TypeOrmModule.forRoot(typeOrmConfig.options),
     WinstonModule.forRoot({
       transports: [
         new winston.transports.Console({
