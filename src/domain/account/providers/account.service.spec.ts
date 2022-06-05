@@ -1,6 +1,6 @@
 import { AccountService } from './account.service';
 
-describe('RecipientService', () => {
+describe('AccountService', () => {
   it('should be defined', () => {
     expect(new AccountService()).toBeDefined();
   });

@@ -19,14 +19,14 @@ export class AccountController {
   ) {}
 
   @Get()
-  async getAccounts() {
+  async getAll() {
     this.logger.info('controller works', { context: this.constructor.name });
-    return this.accountService.getAccounts();
+    return this.accountService.getAll();
   }
 
   @Post()
   @UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
-  async createAccount(@Body() accountDto: AccountDto) {
+  async create(@Body() accountDto: AccountDto) {
     this.logger.info('controller works', { context: this.constructor.name });
     return this.accountService.create(accountDto);
   }

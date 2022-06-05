@@ -6,9 +6,11 @@ import * as winston from 'winston';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AccountHttpModule } from './domain/account/account-http.module';
 import { typeOrmConfig } from './config/typeorm.config';
+import {TransactionHttpModule} from "./domain/transaction/transaction-http.module";
 
 @Module({
   imports: [
+    TransactionHttpModule,
     AccountHttpModule,
     TypeOrmModule.forRoot(typeOrmConfig.options),
     WinstonModule.forRoot({
