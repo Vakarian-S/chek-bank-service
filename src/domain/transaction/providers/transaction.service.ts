@@ -1,4 +1,9 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { Logger } from 'winston';
 import { TransactionRepository } from '../repository/transaction.repository';
 import { TransactionDto } from '../dto/transaction.dto';
@@ -28,6 +33,12 @@ export class TransactionService {
     const recipient = await this.accountService.getById(recipientId);
     if (!recipient) {
       throw new NotFoundException('recipient not found');
+    }
+
+    if (sender.balance < amount) {
+      throw new BadRequestException([
+        'sender does not have enough balance to handle this transaction',
+      ]);
     }
 
     const transactionData = {
