@@ -1,0 +1,8 @@
+services:
+  postgresdb:
+    image: postgis/postgis:11-3.0-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=chek-bank-service
+      - POSTGRES_PASSWORD=postgres
