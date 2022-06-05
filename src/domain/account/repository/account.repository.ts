@@ -26,6 +26,14 @@ export class AccountRepository {
     return this.accountRepository.findOneBy(fields);
   }
 
+  getById(id: string) {
+    return this.accountRepository
+      .createQueryBuilder('account')
+      .addSelect('account.balance')
+      .where('account.id = :id', { id })
+      .getOne();
+  }
+
   async create(data: AccountDto) {
     const newAccount = this.accountRepository.create(data);
     return await newAccount.save();

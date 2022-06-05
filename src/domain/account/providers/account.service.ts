@@ -42,7 +42,7 @@ export class AccountService {
       id,
     };
     this.logger.info('Obtaining account by id', context);
-    return this.accountRepository.getOne({ id });
+    return this.accountRepository.getById(id);
   }
 
   async addRecipient(accountId: string, recipientDto: AccountDto) {
@@ -60,8 +60,12 @@ export class AccountService {
       throw new NotFoundException(['Recipient not found']);
     }
 
-    this.logger.info('data', {...context, recipient, accountRecipients})
-    if (accountRecipients.some(account => account.accountNumber === recipient.accountNumber)) {
+    this.logger.info('data', { ...context, recipient, accountRecipients });
+    if (
+      accountRecipients.some(
+        (account) => account.accountNumber === recipient.accountNumber,
+      )
+    ) {
       throw new BadRequestException(['Recipient is already saved']);
     }
 
@@ -74,7 +78,9 @@ export class AccountService {
       method: this.getRecipients.name,
     };
     this.logger.info('Attempting to get recipients', context);
-    const account = await this.accountRepository.getAccountWithRecipients(accountId);
+    const account = await this.accountRepository.getAccountWithRecipients(
+      accountId,
+    );
     if (!account) {
       throw new NotFoundException(['Account not found']);
     }

@@ -40,7 +40,7 @@ export class Account extends BaseEntity {
   accountNumber: number;
 
   @Exclude()
-  @Column({ type: 'numeric', default: 1000000 })
+  @Column({ type: 'numeric', default: 1000000, select: false })
   balance: number;
 
   @OneToMany(() => Transaction, (transaction) => transaction.sender)

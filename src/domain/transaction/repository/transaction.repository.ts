@@ -50,14 +50,31 @@ export class TransactionRepository {
     );
   }
 
-  getAll() {
-    this.logger.info('repository works', { context: this.constructor.name });
+  getQueryBuilder() {
     return this.transactionRepository
       .createQueryBuilder('transaction')
       .addSelect('sender.name')
+      .addSelect('sender.dni')
+      .addSelect('sender.bank')
+      .addSelect('sender.accountType')
+      .addSelect('sender.accountNumber')
       .addSelect('recipient.name')
+      .addSelect('recipient.dni')
+      .addSelect('recipient.bank')
+      .addSelect('recipient.accountType')
+      .addSelect('recipient.accountNumber')
       .innerJoin('transaction.sender', 'sender')
-      .innerJoin('transaction.recipient', 'recipient')
+      .innerJoin('transaction.recipient', 'recipient');
+  }
+
+  getAll() {
+    this.logger.info('repository works', { context: this.constructor.name });
+    return this.getQueryBuilder().getMany();
+  }
+
+  getById(id: string) {
+    return this.getQueryBuilder()
+      .where('sender.id = :id OR recipient.id = :id', { id })
       .getMany();
   }
 }
