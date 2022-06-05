@@ -1,10 +1,11 @@
 import {
   BaseEntity,
   Column,
-  Entity,
+  Entity, OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { AccountTypeEnum } from '../enums/account-type.enum';
+import {Transaction} from "../../transaction/entities/transaction.entity";
 
 @Entity()
 export class Account extends BaseEntity {
@@ -31,4 +32,10 @@ export class Account extends BaseEntity {
 
   @Column({ type: 'varchar' })
   accountNumber: string;
+
+  @OneToMany(() => Transaction, (transaction) => transaction.sender)
+  transactionsSent: Transaction[]
+
+  @OneToMany(() => Transaction, (transaction) => transaction.recipient)
+  transactionsReceived: Transaction[]
 }

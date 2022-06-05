@@ -17,6 +17,10 @@ export class AccountRepository {
     return this.accountRepository.find();
   }
 
+  getById(id: string) {
+    return this.accountRepository.findOneBy({ id });
+  }
+
   async create(data: AccountDto) {
     const context = {
       context: this.constructor.name,
