@@ -23,12 +23,12 @@ export class TransactionRepository {
           [amount, sender.id],
         );
 
-        const resultingBalance = await entityManager.query(
+        const resultingSenderBalance = await entityManager.query(
           `SELECT account.balance FROM account WHERE account.id = $1`,
           [sender.id],
         );
 
-        if (resultingBalance[0]?.balance < 0) {
+        if (resultingSenderBalance[0]?.balance < 0) {
           throw new BadRequestException(
             'Sender has not enough funds for the operation',
           );
@@ -39,11 +39,20 @@ export class TransactionRepository {
           [amount, recipient.id],
         );
 
+        const resultingRecipientBalance = await entityManager.query(
+          `SELECT account.balance FROM account WHERE account.id = $1`,
+          [recipient.id],
+        );
+
         const newAccount = this.transactionRepository.create({
           amount: data.amount,
         });
         newAccount.sender = data.sender;
         newAccount.recipient = data.recipient;
+        newAccount.senderBalance = parseInt(resultingSenderBalance[0].balance);
+        newAccount.recipientBalance = parseInt(
+          resultingRecipientBalance[0].balance,
+        );
         const response = await newAccount.save();
         return plainToClass(Transaction, response);
       },
@@ -53,6 +62,7 @@ export class TransactionRepository {
   getQueryBuilder() {
     return this.transactionRepository
       .createQueryBuilder('transaction')
+      .addOrderBy('transaction.createdAt', 'DESC')
       .addSelect('sender.name')
       .addSelect('sender.dni')
       .addSelect('sender.bank')
