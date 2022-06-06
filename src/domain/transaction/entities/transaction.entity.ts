@@ -19,6 +19,12 @@ export class Transaction extends BaseEntity {
   @CreateDateColumn({ type: 'timestamptz', name: 'created_at' })
   createdAt?: Date;
 
+  @Column({ type: 'numeric' })
+  senderBalance: number;
+
+  @Column({ type: 'numeric' })
+  recipientBalance: number;
+
   @ManyToOne(() => Account, (account) => account.transactionsSent)
   sender: Account;
 
