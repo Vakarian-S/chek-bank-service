@@ -24,7 +24,8 @@
     "migration:generate": "npm run build && npm run typeorm migration:generate --",
     "migration:run": "npm run build && npm run typeorm migration:run --",
     "migration:run:prod": "npm run typeorm migration:run --",
-    "migration:revert": "npm run build && npm run typeorm migration:revert --"
+    "migration:revert": "npm run build && npm run typeorm migration:revert --",
+    "gcp-build": "npm run build"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
