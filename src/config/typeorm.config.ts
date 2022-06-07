@@ -2,11 +2,11 @@
 import {DataSource} from "typeorm";
 
 export const typeOrmConfig = new DataSource({
-
+  host: '35.223.182.152',
   type: 'postgres',
   port: 5432,
   username: 'postgres',
-  password: 'postgres',
+  password: 's1=iVC;uo]Q+IY1&',
   database: 'chek-bank-service',
   synchronize: false,
   entities: [`${__dirname}/../**/*.entity{.ts,.js}`],
