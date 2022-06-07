@@ -1,1 +1,3 @@
 runtime: nodejs14
+service: chek-bank-service
+env: flex

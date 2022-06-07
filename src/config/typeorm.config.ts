@@ -6,7 +6,7 @@ export const typeOrmConfig = new DataSource({
   type: 'postgres',
   port: 5432,
   username: 'postgres',
-  password: 's1=iVC;uo]Q+IY1&',
+  password: process.env.DATABASE_PASSWORD || 's1=iVC;uo]Q+IY1&',
   database: 'chek-bank-service',
   synchronize: false,
   entities: [`${__dirname}/../**/*.entity{.ts,.js}`],
