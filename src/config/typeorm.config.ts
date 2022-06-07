@@ -2,7 +2,7 @@
 import {DataSource} from "typeorm";
 
 export const typeOrmConfig = new DataSource({
-  host: '35.223.182.152',
+  host: '/cloudsql/chek-app-352602:us-central1:chek-bank-service',
   type: 'postgres',
   port: 5432,
   username: 'postgres',
