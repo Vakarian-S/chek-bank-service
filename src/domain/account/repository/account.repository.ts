@@ -51,6 +51,7 @@ export class AccountRepository {
   getAccountWithRecipients(id: string) {
     return this.accountRepository
       .createQueryBuilder('account')
+      .addSelect('savedRecipients.id')
       .addSelect('savedRecipients.accountNumber')
       .addSelect('savedRecipients.name')
       .addSelect('savedRecipients.email')
