@@ -52,4 +52,4 @@ jobs:
         uses: google-github-actions/deploy-appengine@v0.8.0
         with:
           deliverables: app.yaml
-            version: 'v1'
+          version: 'v1'
