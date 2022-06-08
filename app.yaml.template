@@ -1,0 +1,8 @@
+runtime: nodejs
+service: chek-bank-service
+env: flex
+beta_settings:
+  cloud_sql_instances: chek-app-352602:us-central1:chek-bank-service
+env_variables:
+  DATABASE_HOST: ${DATABASE_HOST}
+  DATABASE_PASSWORD: ${DATABASE_PASSWORD}
