@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "c83dde62-04ee-4b6a-a129-de80e5ac04d1",
+		"name": "Transfer App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10279537"
+	},
+	"item": [
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Sebastian\",\n    \"dni\": \"18918762-9\",\n    \"email\": \"sebastian.gvg94@gmail.com\",\n    \"bank\": \"Banco Chile\",\n    \"phone\": \"+56944844287\",\n    \"accountType\": \"cuenta-corriente\",\n    \"accountNumber\": \"22222222\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/account",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Recipient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Sebastian\",\n    \"dni\": \"18918762-9\",\n    \"email\": \"sebastian.gvg94@gmail.com\",\n    \"bank\": \"Banco Chile\",\n    \"phone\": \"+56944844287\",\n    \"accountType\": \"cuenta-corriente\",\n    \"accountNumber\": \"22222222\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/account",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Sebastian\",\n    \"dni\": \"18918762-9\",\n    \"email\": \"sebastian.gvg94@gmail.com\",\n    \"bank\": \"Banco Chile\",\n    \"phone\": \"+56944844287\",\n    \"accountType\": \"cuenta-corriente\",\n    \"accountNumber\": \"22222222\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/account",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Accounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/account",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Accounts By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/account",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Recipients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/account",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/account",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/account",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"account"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
