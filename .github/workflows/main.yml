@@ -46,22 +46,12 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
-      - id: generate_dotenv_file
-        env:
-          DATABASE_HOST: '${{ secrets.DATABASE_HOST }}'
-          DATABASE_PASSWORD: '${{ secrets.DATABASE_PASSWORD}}'
-        run: echo "$MY_DOTENV" > .env-for-app-yaml
-
-      - id: print-env
-        run: echo "$(<.env-for-app-yaml)"
-
       - id: prepare-app-yaml
         uses: mshick/fast-envsubst@v1
         env:
           DATABASE_HOST: '${{ secrets.DATABASE_HOST }}'
           DATABASE_PASSWORD: '${{ secrets.DATABASE_PASSWORD}}'
         with:
-          env-file: .env-for-app-yaml
           in-file: app.yaml.template
           out-file: app.yaml
 
