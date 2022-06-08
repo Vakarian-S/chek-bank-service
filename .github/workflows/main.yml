@@ -58,11 +58,14 @@ jobs:
           env-file: .env-for-app-yaml
           in-file: app.yaml.template
           out-file: app.yaml
+
+      - id: print app
+        run: echo "$(<app.yaml)"
         
-      - name: Deploy to App Engine
-        # You may pin to the exact commit or the version.
-        # uses: google-github-actions/deploy-appengine@c0374ce7602000a1b1dbcf28f7a4ab4361464b5f
-        uses: google-github-actions/deploy-appengine@v0.8.0
-        with:
-          deliverables: app.yaml
-          version: 'v1'
+#      - name: Deploy to App Engine
+#        # You may pin to the exact commit or the version.
+#        # uses: google-github-actions/deploy-appengine@c0374ce7602000a1b1dbcf28f7a4ab4361464b5f
+#        uses: google-github-actions/deploy-appengine@v0.8.0
+#        with:
+#          deliverables: app.yaml
+#          version: 'v1'
