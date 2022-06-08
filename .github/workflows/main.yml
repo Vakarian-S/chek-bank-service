@@ -52,6 +52,9 @@ jobs:
           DATABASE_PASSWORD: '${{ secrets.DATABASE_PASSWORD}}'
         run: echo "$DATABASE_HOST" > .env-for-app-yaml
 
+      - id: print-env
+        run: echo "$(<.env-for-app-yaml)"
+
       - id: prepare-app-yaml
         uses: mshick/fast-envsubst@v1
         with:
