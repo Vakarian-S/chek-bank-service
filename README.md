@@ -33,7 +33,13 @@ $ npm install
 ```
 
 ## Running the app
+### Run in docker
+First run the database trough docker.
 
+Start using docker compose
+```bash
+docker-compose up
+```
 ```bash
 # development
 $ npm run start
@@ -44,6 +50,23 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+### Migrations
+
+How to run migrations
+```bash
+source .env
+npm run migration:run
+```
+
+* To generate new migrations from typeorm entities,
+```bash
+npm run migration:generate -- src/migrations/<give a name>
+```
+
+For custom migrations
+```bash
+npm run migration:create -- src/migrations/<give a name>
 
 ## Test
 
