@@ -40,6 +40,18 @@ Start using docker compose
 ```bash
 docker-compose up
 ```
+
+### Database Connection
+To use the local database edit the file at 
+```bash
+src/config/typeorm.config.ts
+```
+With the following settings
+```bash
+host: 'localhost',
+password: 'postgres',
+```
+
 ```bash
 # development
 $ npm run start
