@@ -29,7 +29,7 @@
     "migration:run": "npm run build && npm run typeorm migration:run --",
     "migration:run:prod": "npm run typeorm migration:run --",
     "migration:revert": "npm run build && npm run typeorm migration:revert --",
-    "gcp-build": "npm run build"
+    "gcp-build": "source .env && npm run build"
   },
   "dependencies": {
     "@nestjs/cli": "^8.0.0",
