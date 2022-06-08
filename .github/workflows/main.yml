@@ -59,7 +59,7 @@ jobs:
           in-file: app.yaml.template
           out-file: app.yaml
 
-      - id: print app
+      - id: print-app
         run: echo "$(<app.yaml)"
         
 #      - name: Deploy to App Engine
