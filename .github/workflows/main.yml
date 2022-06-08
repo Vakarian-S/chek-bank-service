@@ -48,8 +48,8 @@ jobs:
 
       - id: generate_dotenv_file
         env:
-          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD}}
+          DATABASE_HOST: '${{ secrets.DATABASE_HOST }}'
+          DATABASE_PASSWORD: '${{ secrets.DATABASE_PASSWORD}}'
         run: echo "$MY_DOTENV" > .env-for-app-yaml
 
       - id: prepare-app-yaml
